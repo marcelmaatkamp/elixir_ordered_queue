@@ -50,9 +50,8 @@ defmodule OrderedQueueWeb do
 
   def live_view do
     quote do
-      use Phoenix.LiveView
-
-      unquote(html_helpers())
+      use Phoenix.LiveView,
+        layout: {OrderedQueueWeb.Layouts, :app}
     end
   end
 

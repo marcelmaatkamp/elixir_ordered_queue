@@ -45,4 +45,7 @@ defmodule OrderedQueueWeb.Router do
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
+
+  live "/dashboard", OrderedQueueWeb.MonitorLive
+
 end

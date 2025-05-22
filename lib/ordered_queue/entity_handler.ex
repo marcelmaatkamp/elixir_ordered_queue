@@ -10,14 +10,24 @@ defmodule OrderedQueue.EntityHandler do
   def send_message(user_id, message) do
     GenServer.cast(via(user_id), {:process, message})
   end
-
   def init(user_id) do
-    {:ok, %{user_id: user_id}}
+    {:ok, %{user_id: user_id, messages: []}}
   end
 
   def handle_cast({:process, message}, state) do
     IO.puts("[#{state.user_id}] Processing message: #{inspect(message)}")
-    Process.sleep(500)  # simulate some work
-    {:noreply, state}
+    new_state = %{state | messages: [message | Enum.take(state.messages, 4)]}
+    notify_ui(state.user_id, new_state.messages)
+    {:noreply, new_state}
   end
+
+  defp notify_ui(user_id, messages) do
+    IO.inspect({:broadcasting, user_id, messages}, label: "NotifyUI")
+    Phoenix.PubSub.broadcast(
+      OrderedQueue.PubSub,
+      "updates",
+      {:update, %{user_id: user_id, messages: messages}}
+    )
+  end
+
 end

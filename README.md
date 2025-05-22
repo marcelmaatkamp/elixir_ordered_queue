@@ -1,7 +1,15 @@
 # OrderedQueue
 
+# start
+
 ```bash
 mix phx.server
+```
+
+# start with iex
+
+```bash
+iex -S mix phx.server
 ```
 
 # add 

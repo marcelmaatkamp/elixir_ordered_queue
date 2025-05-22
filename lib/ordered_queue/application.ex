@@ -5,7 +5,8 @@ defmodule OrderedQueue.Application do
     children = [
       OrderedQueueWeb.Endpoint,
       {Registry, keys: :unique, name: OrderedQueue.Registry},
-      {OrderedQueue.EntitySupervisor, []}
+      {OrderedQueue.EntitySupervisor, []},
+      {Phoenix.PubSub, name: OrderedQueue.PubSub}
     ]
 
     opts = [strategy: :one_for_one, name: OrderedQueue.Supervisor]

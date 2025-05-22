@@ -1,13 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <title>OrderedQueue</title>
-    <%= Phoenix.LiveView.Helpers.live_title_tag assigns[:page_title] || "Live Dashboard" %>
-  </head>
-  <body class="bg-gray-100 text-gray-900">
-    <main class="container mx-auto p-6">
-      <%= @inner_content %>
-    </main>
-  </body>
-</html>
+<header class="px-4 sm:px-6 lg:px-8">
+  <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
+    <div class="flex items-center gap-4">
+      <a href="/">
+        <img src={~p"/images/logo.svg"} width="36" alt="OrderedQueue Logo" />
+      </a>
+    </div>
+    <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
+      <.link href={~p"/dashboard"}>Monitor</.link>
+    </div>
+  </div>
+</header>
+<main class="px-4 py-10 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-4xl">
+    <%= @inner_content %>
+  </div>
+</main>

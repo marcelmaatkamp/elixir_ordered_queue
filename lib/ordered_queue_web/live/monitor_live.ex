@@ -3,16 +3,14 @@ defmodule OrderedQueueWeb.MonitorLive do
 
   @impl true
   def mount(_params, _session, socket) do
-IO.puts("📬 Subscribing to updates...")
-
-  Phoenix.PubSub.subscribe(OrderedQueue.PubSub, "updates")
-
-  {:ok, assign(socket, entities: %{})}
+    IO.puts("📬 Subscribing to updates...")
+    Phoenix.PubSub.subscribe(OrderedQueue.PubSub, "updates")
+    {:ok, assign(socket, entities: %{})}
   end
 
   @impl true
   def handle_info({:update, %{user_id: id, messages: messages}}, socket) do
-    IO.inspect({:received_pubsub, id, messages}, label: "LiveViewUpdate")
+    IO.inspect({:received_pubsub, id, messages}, label: "MonitorLive.handle_info update")
     updated = Map.put(socket.assigns.entities, id, messages)
     {:noreply, assign(socket, entities: updated)}
   end

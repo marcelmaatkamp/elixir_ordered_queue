@@ -16,7 +16,7 @@ defmodule OrderedQueueWeb.Router do
 
   scope "/", OrderedQueueWeb do
     pipe_through :browser
-
+    live "/dashboard", MonitorLive
     get "/", PageController, :home
   end
 
@@ -45,7 +45,5 @@ defmodule OrderedQueueWeb.Router do
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
-
-  live "/dashboard", OrderedQueueWeb.MonitorLive
 
 end

@@ -1,12 +1,19 @@
 # OrderedQueue
 
+# get dependencies and compile
+
+```bash
+mix deps &&\
+mix compile
+```
+
 # start
 
 ```bash
 mix phx.server
 ```
 
-# start with iex
+# or start interactively with iex
 
 ```bash
 iex -S mix phx.server
@@ -24,8 +31,6 @@ curl -X POST http://localhost:4000/api/messages \
   -d '{"user_id": "alice", "message": "second"}'
 ```
 
-# get 
+# dashboard
 
-```bash
-
-```
+http://localhost:4000/dashboard

@@ -6,6 +6,7 @@ defmodule OrderedQueue.Application do
       OrderedQueueWeb.Endpoint,
       {Registry, keys: :unique, name: OrderedQueue.Registry},
       {OrderedQueue.EntitySupervisor, []},
+      OrderedQueue.State,
       {Phoenix.PubSub, name: OrderedQueue.PubSub}
     ]
 

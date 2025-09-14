@@ -24,11 +24,11 @@ iex -S mix phx.server
 ```bash
 curl -X POST http://localhost:4000/api/messages \
   -H "Content-Type: application/json" \
-  -d '{"user_id": "alice", "message": "first"}'
+  -d '{"user_id": "alice", "message": "cookie"}'
 
 curl -X POST http://localhost:4000/api/messages \
   -H "Content-Type: application/json" \
-  -d '{"user_id": "alice", "message": "second"}'
+  -d '{"user_id": "bob", "message": "cake"}'
 ```
 
 # dashboard
